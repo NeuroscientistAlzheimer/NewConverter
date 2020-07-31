@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">NewConverter</string>
+    <string name="USD_RUB">USD - RUB</string>
 </resources>
