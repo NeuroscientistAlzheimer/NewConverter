@@ -23,6 +23,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import in.galaxyofandroid.spinerdialog.OnSpinerItemClick;
 import in.galaxyofandroid.spinerdialog.SpinnerDialog;
@@ -30,6 +31,7 @@ import in.galaxyofandroid.spinerdialog.SpinnerDialog;
 public class MainActivity extends AppCompatActivity {
 
     private RequestQueue mQueue;
+    private RequestQueue itemsQueue;
     private TextView mTextViewResult;
     SpinnerDialog spinnerCurrency1;
     SpinnerDialog spinnerCurrency2;
@@ -40,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
     float numCurrensy1;
     float numCurrensy2;
     float calculationCurrensy;
+    final ArrayList<String> itemsCurrency = new ArrayList<>();
     float number;
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,13 +52,10 @@ public class MainActivity extends AppCompatActivity {
 
         mTextViewResult = findViewById(R.id.text_view_result);
         mQueue = Volley.newRequestQueue(this);
+        itemsQueue = Volley.newRequestQueue(this);
         Log.d("Pars","Начало");
         Log.d("Pars","Конец");
-        final ArrayList<String> itemsCurrency = new ArrayList<>();
-        itemsCurrency.add("USD");
-        itemsCurrency.add("RUB");
-        itemsCurrency.add("EUR");
-        itemsCurrency.add("AUD");
+        emtyTtemsCurrency();
         currency1 = findViewById(R.id.currency1);
         currency2 = findViewById(R.id.currency2);
         button_res = findViewById(R.id.button_res);
@@ -143,5 +143,35 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         mQueue.add(request);
+    }
+
+    private void emtyTtemsCurrency(){
+        String url = "http://apilayer.net/api/live?access_key=ad16a4ab373cbeca1bdbf0fd5b1e77ed";
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+            public void onResponse(JSONObject response) {
+                try {
+                    Log.d("Pars", "1присвоение");
+                    JSONObject last = (JSONObject) response.get("quotes");
+                    Log.d("Pars", "2присвоение");
+                    Iterator<String> keys = last.keys();
+                    do{
+                        String k = keys.next().toString();
+                        k = k.substring(3,k.length());
+                        itemsCurrency.add(k);
+                        Log.d("Pars", "3завершение" + k);
+                    }while(keys.hasNext());
+                    Log.d("Pars", "3завершение" + keys);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+            }
+        });
+        itemsQueue.add(request);
     }
 }
