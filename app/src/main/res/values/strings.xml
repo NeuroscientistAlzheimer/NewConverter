@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">NewConverter</string>
     <string name="USD_RUB">USD - RUB</string>
+    <string name="Customization">Customization</string>
+    <string name="Currency">currency</string>
 </resources>

@@ -2,6 +2,7 @@ package com.example.newconverter;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.util.Log;
@@ -38,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
     Button currency1;
     Button currency2;
     Button button_res;
+    Button Customization_activity;
     EditText num;
     float numCurrensy1;
     float numCurrensy2;
@@ -59,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
         currency1 = findViewById(R.id.currency1);
         currency2 = findViewById(R.id.currency2);
         button_res = findViewById(R.id.button_res);
+        Customization_activity = findViewById(R.id.Customization_activity);
         num = findViewById(R.id.num);
 
         spinnerCurrency1 = new SpinnerDialog(MainActivity.this,itemsCurrency,"Select Currency");
@@ -107,6 +110,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        Customization_activity.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, Customization.class);
+                startActivity(intent);
+            }
+        });
     }
 
 
