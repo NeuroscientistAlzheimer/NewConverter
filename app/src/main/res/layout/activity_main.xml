@@ -23,24 +23,24 @@
 
     <Button
         android:id="@+id/currency1"
-        android:layout_width="150dp"
+        android:layout_width="125dp"
         android:layout_height="50dp"
-        android:text="currency"
+        android:text="@string/From"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/currency2"
-        app:layout_constraintHorizontal_bias="0.513"
+        app:layout_constraintHorizontal_bias="0.308"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.676" />
 
     <Button
         android:id="@+id/currency2"
-        android:layout_width="150dp"
+        android:layout_width="125dp"
         android:layout_height="50dp"
-        android:text="currency"
+        android:text="@string/To"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.854"
+        app:layout_constraintHorizontal_bias="0.867"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.676" />
@@ -69,42 +69,61 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.886" />
 
-    <TableLayout
-        android:layout_width="match_parent"
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="300dp"
         android:layout_height="350dp"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.224">
+        app:layout_constraintVertical_bias="0.217">
 
-        <TableRow
+        <Button
+            android:id="@+id/Customization_activity"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="wrap_content"
+            android:text="@string/Customization" />
 
-            <Button
-                android:id="@+id/Customization_activity"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/Customization" />
-        </TableRow>
-
-        <TableRow
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/textView2"
-                android:layout_width="173dp"
-                android:layout_height="124dp"
-                android:text="TextView" />
-        </TableRow>
+                android:id="@+id/DBTextName"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text=""
+                android:textSize="30dp" />
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </TableLayout>
+            <TextView
+                android:id="@+id/DBTextRes"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text=""
+                android:textSize="30dp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/swap"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:text="swap"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/currency2"
+        app:layout_constraintHorizontal_bias="0.485"
+        app:layout_constraintStart_toEndOf="@+id/currency1"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.676" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -8,14 +8,39 @@
 
     <TableLayout
         android:id="@+id/tableLayout"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
+        android:layout_width="315dp"
+        android:layout_height="331dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.855"
+        app:layout_constraintHorizontal_bias="0.688"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.403">
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/From" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/To" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/Off_On" />
+        </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
@@ -23,15 +48,15 @@
 
             <Button
                 android:id="@+id/currency11"
-                android:layout_width="wrap_content"
+                android:layout_width="130dp"
                 android:layout_height="wrap_content"
-                android:text="@string/Currency" />
+                android:text="@string/USD" />
 
             <Button
                 android:id="@+id/currency12"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/Currency" />
+                android:layout_width="130dp"
+                android:layout_height="match_parent"
+                android:text="@string/RUB" />
 
             <Switch
                 android:id="@+id/switch1"
@@ -48,13 +73,13 @@
                 android:id="@+id/currency21"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/Currency" />
+                android:text="@string/USD" />
 
             <Button
                 android:id="@+id/currency22"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/Currency" />
+                android:text="@string/RUB" />
 
             <Switch
                 android:id="@+id/switch2"
@@ -71,13 +96,13 @@
                 android:id="@+id/currency31"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/Currency" />
+                android:text="@string/USD" />
 
             <Button
                 android:id="@+id/currency32"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/Currency" />
+                android:text="@string/RUB" />
 
             <Switch
                 android:id="@+id/switch3"
@@ -94,13 +119,13 @@
                 android:id="@+id/currency41"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/Currency" />
+                android:text="@string/USD" />
 
             <Button
                 android:id="@+id/currency42"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/Currency" />
+                android:text="@string/RUB" />
 
             <Switch
                 android:id="@+id/switch4"
@@ -117,13 +142,13 @@
                 android:id="@+id/currency51"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/Currency" />
+                android:text="@string/USD" />
 
             <Button
                 android:id="@+id/currency52"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/Currency" />
+                android:text="@string/RUB" />
 
             <Switch
                 android:id="@+id/switch5"
@@ -140,13 +165,13 @@
                 android:id="@+id/currency61"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/Currency" />
+                android:text="@string/USD" />
 
             <Button
                 android:id="@+id/currency62"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/Currency" />
+                android:text="@string/RUB" />
 
             <Switch
                 android:id="@+id/switch6"

@@ -3,6 +3,9 @@ package com.example.newconverter;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.text.Editable;
 import android.util.Log;
@@ -40,12 +43,18 @@ public class MainActivity extends AppCompatActivity {
     Button currency2;
     Button button_res;
     Button Customization_activity;
+    Button swap;
     EditText num;
+    TextView DBtextRes;
+    TextView DBtextName;
     float numCurrensy1;
     float numCurrensy2;
     float calculationCurrensy;
     final ArrayList<String> itemsCurrency = new ArrayList<>();
     float number;
+    DBHelper dbHelper;
+    SharedPreferences sPref;
+
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,9 +69,12 @@ public class MainActivity extends AppCompatActivity {
         emtyTtemsCurrency();
         currency1 = findViewById(R.id.currency1);
         currency2 = findViewById(R.id.currency2);
+        swap = findViewById(R.id.swap);
         button_res = findViewById(R.id.button_res);
         Customization_activity = findViewById(R.id.Customization_activity);
         num = findViewById(R.id.num);
+        DBtextRes = findViewById(R.id.DBTextRes);
+        DBtextName = findViewById(R.id.DBTextName);
 
         spinnerCurrency1 = new SpinnerDialog(MainActivity.this,itemsCurrency,"Select Currency");
         spinnerCurrency1.setCancellable(true);
@@ -100,12 +112,10 @@ public class MainActivity extends AppCompatActivity {
 
         button_res.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Log.d("Pars","кнопка");
                 String first;
                 String one;
                 one = (String) currency2.getText();
                 first =(String) currency1.getText();
-                Log.d("Pars","Начало" + one + first);
                 jsonParse(first,one);
             }
         });
@@ -116,16 +126,32 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        swap.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                String Swap1;
+                Swap1 = currency1.getText().toString();
+                currency1.setText(currency2.getText());
+                currency2.setText(Swap1);
+            }
+        });
+        LoadOption();
+        DBRider();
+        Log.d("Pars","Вход в бд");
+    }
+
+    protected void onDestroy() {
+        SaveOption();
+        super.onDestroy();
     }
 
 
     private void jsonParse(final String a, final String b){
         Log.d("Pars","Вход");
-        String url = "http://api.currencylayer.com/live?access_key=ad16a4ab373cbeca1bdbf0fd5b1e77ed&%20currencies="+a+","+b+"&format=1";
+        String url = "http://api.currencylayer.com/live?access_key=791ccd6771bd7c709f97fb37ca83c8dd&%20currencies="+a+","+b+"&format=1";
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             public void onResponse(JSONObject response) {
                 try {
-                    Log.d("Pars", "присвоение");
                     JSONObject last = (JSONObject) response.get("quotes");
                     String nameCurrensy1 = "USD" + b;
                     String nameCurrensy2 = "USD" + a;
@@ -137,9 +163,7 @@ public class MainActivity extends AppCompatActivity {
                     calculationCurrensy = numCurrensy1 / numCurrensy2;
                     res = calculationCurrensy * numC;
                     String resS = String.format("%.2f",res);
-                    Log.d("Pars", "присвоение"+ numC +"\n"+numCurrensy1+"\n"+numCurrensy2 + "\n" + calculationCurrensy + "\n" + resS);
                     mTextViewResult.setText(resS);
-                    Log.d("Pars", "завершение" );
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -155,21 +179,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void emtyTtemsCurrency(){
-        String url = "http://apilayer.net/api/live?access_key=ad16a4ab373cbeca1bdbf0fd5b1e77ed";
+        String url = "http://apilayer.net/api/live?access_key=791ccd6771bd7c709f97fb37ca83c8dd";
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             public void onResponse(JSONObject response) {
                 try {
-                    Log.d("Pars", "1присвоение");
                     JSONObject last = (JSONObject) response.get("quotes");
-                    Log.d("Pars", "2присвоение");
                     Iterator<String> keys = last.keys();
                     do{
                         String k = keys.next().toString();
                         k = k.substring(3,k.length());
                         itemsCurrency.add(k);
-                        Log.d("Pars", "3завершение" + k);
                     }while(keys.hasNext());
-                    Log.d("Pars", "3завершение" + keys);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -182,5 +202,87 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         itemsQueue.add(request);
+    }
+
+    public void DBRider(){
+        Log.d("Pars","Вход в бд1");
+        dbHelper = new DBHelper(this);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        Log.d("Pars","Вход в бд2");
+        String S;
+        String B;
+        Cursor cursor = db.query(DBHelper.TABLE_CURRENCY, null, null, null, null, null, null);
+        if (cursor.moveToFirst()) {
+            Log.d("Pars", "база4");
+            int idIndex = cursor.getColumnIndex(DBHelper.KEY_ID);
+            int nameIndex = cursor.getColumnIndex(DBHelper.KEY_CURRENCY_TO);
+            int emailIndex = cursor.getColumnIndex(DBHelper.KEY_CURRENCY);
+            String DB = "";
+            do {
+                S = cursor.getString(nameIndex);
+                B = cursor.getString(emailIndex);
+                DB = DB + cursor.getString(nameIndex) + "-" + cursor.getString(emailIndex)+"\n";
+                Log.d("Pars1","load1"+ cursor.getString(nameIndex) + " " + cursor.getString(emailIndex)+"\n");
+                jsonParseLoad(S, B);
+                Log.d("Pars1","load2"+ cursor.getString(nameIndex) + " " + cursor.getString(emailIndex)+"\n");
+
+
+            } while (cursor.moveToNext());
+            //DBtext.setText(DB);
+        } else
+            Log.d("mLog","0 rows");
+
+        cursor.close();
+    }
+
+
+    private void jsonParseLoad(final String a, final String b){
+        Log.d("Pars1","Вход"+ a + b);
+        String url = "http://apilayer.net/api/live?access_key=791ccd6771bd7c709f97fb37ca83c8dd";
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+            public void onResponse(JSONObject response) {
+                try {
+                    JSONObject last = (JSONObject) response.get("quotes");
+                    String nameCurrensy1 = "USD" + b;
+                    String nameCurrensy2 = "USD" + a;
+                    String summRes;
+                    String summName;
+                    numCurrensy1 = (float) last.getDouble(nameCurrensy1);
+                    numCurrensy2 = (float) last.getDouble(nameCurrensy2);
+                    calculationCurrensy = numCurrensy1 / numCurrensy2;
+                    summName = DBtextName.getText().toString();
+                    DBtextName.setText(summName+a+"-"+b+"\n");
+                    summRes = DBtextRes.getText().toString();
+                    DBtextRes.setText(summRes + String.format("%.2f",calculationCurrensy)+"\n");
+                    Log.d("Pars1","Вход7" + a + b +String.format("%.2f",calculationCurrensy));
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+            }
+        });
+        mQueue.add(request);
+
+        Log.d("Pars","Вход совсем");
+    }
+
+    public void SaveOption(){
+        sPref = getPreferences(MODE_PRIVATE);
+        SharedPreferences.Editor ed = sPref.edit();
+        ed.putString("currency1", currency1.getText().toString());
+        ed.putString("currency2", currency2.getText().toString());
+        ed.apply();
+
+    }
+
+    public void LoadOption(){
+        sPref = getPreferences(MODE_PRIVATE);
+        currency1.setText(sPref.getString("currency1", "FROM"));
+        currency2.setText(sPref.getString("currency1", "TO"));
     }
 }
