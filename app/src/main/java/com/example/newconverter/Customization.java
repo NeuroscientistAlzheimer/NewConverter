@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -112,6 +113,7 @@ public class Customization extends AppCompatActivity implements View.OnClickList
         Log.d("Pars", "база");
         LoadOption();
 
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
     }
     public void onClick (View view){
         switch (view.getId()){
@@ -226,7 +228,7 @@ public class Customization extends AppCompatActivity implements View.OnClickList
     }
 
     private void emtyTtemsCurrency(final ArrayList<String> items) {
-        String url = "http://apilayer.net/api/live?access_key=791ccd6771bd7c709f97fb37ca83c8dd";
+        String url = "http://apilayer.net/api/live?access_key=9c169bf4c6824b5f66efe75011933c85";
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             public void onResponse(JSONObject response) {
                 try {

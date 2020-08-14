@@ -1,17 +1,22 @@
 package com.example.newconverter;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.text.Editable;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,6 +26,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import android.content.pm.ActivityInfo;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -42,8 +48,7 @@ public class MainActivity extends AppCompatActivity {
     Button currency1;
     Button currency2;
     Button button_res;
-    Button Customization_activity;
-    Button swap;
+    ImageButton swap;
     EditText num;
     TextView DBtextRes;
     TextView DBtextName;
@@ -71,7 +76,6 @@ public class MainActivity extends AppCompatActivity {
         currency2 = findViewById(R.id.currency2);
         swap = findViewById(R.id.swap);
         button_res = findViewById(R.id.button_res);
-        Customization_activity = findViewById(R.id.Customization_activity);
         num = findViewById(R.id.num);
         DBtextRes = findViewById(R.id.DBTextRes);
         DBtextName = findViewById(R.id.DBTextName);
@@ -120,12 +124,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Customization_activity.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, Customization.class);
-                startActivity(intent);
-            }
-        });
 
         swap.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -138,20 +136,40 @@ public class MainActivity extends AppCompatActivity {
         LoadOption();
         DBRider();
         Log.d("Pars","Вход в бд");
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+        if(id == R.id.action_setting) {
+            Intent intent = new Intent(MainActivity.this, Customization.class);
+            startActivity(intent);
+
+        }
+        return true;
     }
 
     protected void onDestroy() {
         SaveOption();
         super.onDestroy();
+
     }
 
 
     private void jsonParse(final String a, final String b){
-        Log.d("Pars","Вход");
-        String url = "http://api.currencylayer.com/live?access_key=791ccd6771bd7c709f97fb37ca83c8dd&%20currencies="+a+","+b+"&format=1";
+        Log.d("Pars","Вход в  и");
+        String url = "http://api.currencylayer.com/live?access_key=9c169bf4c6824b5f66efe75011933c85&%20currencies="+a+","+b+"&format=1";
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             public void onResponse(JSONObject response) {
                 try {
+                    Log.d("Pars","Вход в Б");
                     JSONObject last = (JSONObject) response.get("quotes");
                     String nameCurrensy1 = "USD" + b;
                     String nameCurrensy2 = "USD" + a;
@@ -179,10 +197,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void emtyTtemsCurrency(){
-        String url = "http://apilayer.net/api/live?access_key=791ccd6771bd7c709f97fb37ca83c8dd";
+        Log.d("Pars","Вход в выгрузка");
+        String url = "http://apilayer.net/api/live?access_key=9c169bf4c6824b5f66efe75011933c85";
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             public void onResponse(JSONObject response) {
                 try {
+                    Log.d("Pars","Вход в выгрузка2");
                     JSONObject last = (JSONObject) response.get("quotes");
                     Iterator<String> keys = last.keys();
                     do{
@@ -238,7 +258,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void jsonParseLoad(final String a, final String b){
         Log.d("Pars1","Вход"+ a + b);
-        String url = "http://apilayer.net/api/live?access_key=791ccd6771bd7c709f97fb37ca83c8dd";
+        String url = "http://apilayer.net/api/live?access_key=9c169bf4c6824b5f66efe75011933c85";
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             public void onResponse(JSONObject response) {
                 try {
@@ -283,6 +303,6 @@ public class MainActivity extends AppCompatActivity {
     public void LoadOption(){
         sPref = getPreferences(MODE_PRIVATE);
         currency1.setText(sPref.getString("currency1", "FROM"));
-        currency2.setText(sPref.getString("currency1", "TO"));
+        currency2.setText(sPref.getString("currency2", "TO"));
     }
 }

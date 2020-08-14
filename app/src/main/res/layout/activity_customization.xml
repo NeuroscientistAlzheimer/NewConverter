@@ -4,11 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Customization">
+    tools:context=".Customization"
+    android:background="@color/colorPrimaryDark">
 
     <TableLayout
         android:id="@+id/tableLayout"
-        android:layout_width="315dp"
+        android:layout_width="323dp"
         android:layout_height="331dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -18,28 +19,31 @@
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="70dp">
 
             <TextView
                 android:id="@+id/textView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="@string/From" />
+                android:text="@string/From"
+                android:textSize="18dp" />
 
             <TextView
                 android:id="@+id/textView3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="@string/To" />
+                android:text="@string/To"
+                android:textSize="18dp" />
 
             <TextView
                 android:id="@+id/textView4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="@string/Off_On" />
+                android:text="@string/Off_On"
+                android:textSize="18dp" />
         </TableRow>
 
         <TableRow
@@ -50,13 +54,17 @@
                 android:id="@+id/currency11"
                 android:layout_width="130dp"
                 android:layout_height="wrap_content"
-                android:text="@string/USD" />
+                android:background="@drawable/button_styles"
+                android:text="@string/USD"
+                android:textSize="20dp" />
 
             <Button
                 android:id="@+id/currency12"
                 android:layout_width="130dp"
                 android:layout_height="match_parent"
-                android:text="@string/RUB" />
+                android:background="@drawable/button_styles"
+                android:text="@string/RUB"
+                android:textSize="20dp" />
 
             <Switch
                 android:id="@+id/switch1"
@@ -73,13 +81,17 @@
                 android:id="@+id/currency21"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/USD" />
+                android:background="@drawable/button_styles"
+                android:text="@string/USD"
+                android:textSize="20dp" />
 
             <Button
                 android:id="@+id/currency22"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/RUB" />
+                android:background="@drawable/button_styles"
+                android:text="@string/RUB"
+                android:textSize="20dp" />
 
             <Switch
                 android:id="@+id/switch2"
@@ -96,13 +108,17 @@
                 android:id="@+id/currency31"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/USD" />
+                android:background="@drawable/button_styles"
+                android:text="@string/USD"
+                android:textSize="20dp" />
 
             <Button
                 android:id="@+id/currency32"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/RUB" />
+                android:background="@drawable/button_styles"
+                android:text="@string/RUB"
+                android:textSize="20dp" />
 
             <Switch
                 android:id="@+id/switch3"
@@ -119,13 +135,17 @@
                 android:id="@+id/currency41"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/USD" />
+                android:background="@drawable/button_styles"
+                android:text="@string/USD"
+                android:textSize="20dp" />
 
             <Button
                 android:id="@+id/currency42"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/RUB" />
+                android:background="@drawable/button_styles"
+                android:text="@string/RUB"
+                android:textSize="20dp" />
 
             <Switch
                 android:id="@+id/switch4"
@@ -142,13 +162,17 @@
                 android:id="@+id/currency51"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/USD" />
+                android:background="@drawable/button_styles"
+                android:text="@string/USD"
+                android:textSize="20dp" />
 
             <Button
                 android:id="@+id/currency52"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/RUB" />
+                android:background="@drawable/button_styles"
+                android:text="@string/RUB"
+                android:textSize="20dp" />
 
             <Switch
                 android:id="@+id/switch5"
@@ -165,13 +189,17 @@
                 android:id="@+id/currency61"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/USD" />
+                android:background="@drawable/button_styles"
+                android:text="@string/USD"
+                android:textSize="20dp" />
 
             <Button
                 android:id="@+id/currency62"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/RUB" />
+                android:background="@drawable/button_styles"
+                android:text="@string/RUB"
+                android:textSize="20dp" />
 
             <Switch
                 android:id="@+id/switch6"
@@ -185,24 +213,27 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:text="@string/Customization"
-        android:textSize="50dp"
+        android:textSize="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.052" />
+        app:layout_constraintVertical_bias="0.178" />
 
     <Button
         android:id="@+id/save"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="111dp"
+        android:background="@drawable/button_styles"
         android:text="Save"
+        android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.826"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tableLayout"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.195" />
 </androidx.constraintlayout.widget.ConstraintLayout>
