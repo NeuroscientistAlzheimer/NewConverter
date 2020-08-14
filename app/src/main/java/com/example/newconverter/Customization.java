@@ -113,7 +113,7 @@ public class Customization extends AppCompatActivity implements View.OnClickList
         Log.d("Pars", "база");
         LoadOption();
 
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LOCKED);
     }
     public void onClick (View view){
         switch (view.getId()){

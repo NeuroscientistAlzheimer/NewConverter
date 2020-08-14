@@ -136,7 +136,7 @@ public class MainActivity extends AppCompatActivity {
         LoadOption();
         DBRider();
         Log.d("Pars","Вход в бд");
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LOCKED);
     }
 
     @Override
