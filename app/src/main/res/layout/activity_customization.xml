@@ -27,6 +27,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="@string/From"
+                android:textColor="@color/colorText"
                 android:textSize="18dp" />
 
             <TextView
@@ -35,6 +36,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="@string/To"
+                android:textColor="@color/colorText"
                 android:textSize="18dp" />
 
             <TextView
@@ -43,6 +45,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="@string/Off_On"
+                android:textColor="@color/colorText"
                 android:textSize="18dp" />
         </TableRow>
 
@@ -228,6 +231,7 @@
         android:gravity="center"
         android:text="@string/Customization"
         android:textSize="30dp"
+        android:textColor="@color/colorText"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
