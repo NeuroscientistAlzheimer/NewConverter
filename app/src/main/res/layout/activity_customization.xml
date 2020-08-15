@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Customization"
-    android:background="@color/colorPrimaryDark">
+    android:background="@drawable/background_layout">
 
     <TableLayout
         android:id="@+id/tableLayout"
@@ -56,6 +56,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/button_styles"
                 android:text="@string/USD"
+                android:textColor="@color/colorTextButton"
                 android:textSize="20dp" />
 
             <Button
@@ -64,6 +65,7 @@
                 android:layout_height="match_parent"
                 android:background="@drawable/button_styles"
                 android:text="@string/RUB"
+                android:textColor="@color/colorTextButton"
                 android:textSize="20dp" />
 
             <Switch
@@ -83,6 +85,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/button_styles"
                 android:text="@string/USD"
+                android:textColor="@color/colorTextButton"
                 android:textSize="20dp" />
 
             <Button
@@ -91,6 +94,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/button_styles"
                 android:text="@string/RUB"
+                android:textColor="@color/colorTextButton"
                 android:textSize="20dp" />
 
             <Switch
@@ -110,6 +114,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/button_styles"
                 android:text="@string/USD"
+                android:textColor="@color/colorTextButton"
                 android:textSize="20dp" />
 
             <Button
@@ -118,6 +123,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/button_styles"
                 android:text="@string/RUB"
+                android:textColor="@color/colorTextButton"
                 android:textSize="20dp" />
 
             <Switch
@@ -137,6 +143,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/button_styles"
                 android:text="@string/USD"
+                android:textColor="@color/colorTextButton"
                 android:textSize="20dp" />
 
             <Button
@@ -145,6 +152,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/button_styles"
                 android:text="@string/RUB"
+                android:textColor="@color/colorTextButton"
                 android:textSize="20dp" />
 
             <Switch
@@ -164,6 +172,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/button_styles"
                 android:text="@string/USD"
+                android:textColor="@color/colorTextButton"
                 android:textSize="20dp" />
 
             <Button
@@ -172,6 +181,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/button_styles"
                 android:text="@string/RUB"
+                android:textColor="@color/colorTextButton"
                 android:textSize="20dp" />
 
             <Switch
@@ -191,6 +201,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/button_styles"
                 android:text="@string/USD"
+                android:textColor="@color/colorTextButton"
                 android:textSize="20dp" />
 
             <Button
@@ -199,6 +210,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/button_styles"
                 android:text="@string/RUB"
+                android:textColor="@color/colorTextButton"
                 android:textSize="20dp" />
 
             <Switch
@@ -230,6 +242,7 @@
         android:background="@drawable/button_styles"
         android:text="Save"
         android:textSize="20dp"
+        android:textColor="@color/colorTextButton"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"

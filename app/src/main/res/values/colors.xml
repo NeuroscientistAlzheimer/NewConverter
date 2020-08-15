@@ -9,4 +9,5 @@
     <color name="colorBlack1">#04635A</color>
     <color name="BackText">#4E6081</color>
     <color name="colorText">#72050505</color>
+    <color name="colorTextButton">#957651</color>
 </resources>
