@@ -165,7 +165,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void jsonParse(final String a, final String b){
         Log.d("Pars","Вход в  и");
-        String url = "http://api.currencylayer.com/live?access_key=9c169bf4c6824b5f66efe75011933c85&%20currencies="+a+","+b+"&format=1";
+        String url = "http://api.currencylayer.com/live?access_key=e1ed640fea2e2a43ab70534a7cf98332&%20currencies="+a+","+b+"&format=1";
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             public void onResponse(JSONObject response) {
                 try {
@@ -176,12 +176,16 @@ public class MainActivity extends AppCompatActivity {
                     float res;
                     String numS = num.getText().toString();
                     float numC =Float.parseFloat(numS);
-                    numCurrensy1 = (float) last.getDouble(nameCurrensy1);
-                    numCurrensy2 = (float) last.getDouble(nameCurrensy2);
-                    calculationCurrensy = numCurrensy1 / numCurrensy2;
-                    res = calculationCurrensy * numC;
-                    String resS = String.format("%.2f",res);
-                    mTextViewResult.setText(resS);
+                    if(numC>=0) {
+                        numCurrensy1 = (float) last.getDouble(nameCurrensy1);
+                        numCurrensy2 = (float) last.getDouble(nameCurrensy2);
+                        calculationCurrensy = numCurrensy1 / numCurrensy2;
+                        res = calculationCurrensy * numC;
+                        String resS = String.format("%.2f", res);
+                        mTextViewResult.setText(resS);
+                    }else {
+                        Toast.makeText(MainActivity.this, "Введите положительное число\nЕсли число дробное, пишите через \".\" ",Toast.LENGTH_SHORT).show();
+                    }
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -198,7 +202,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void emtyTtemsCurrency(){
         Log.d("Pars","Вход в выгрузка");
-        String url = "http://apilayer.net/api/live?access_key=9c169bf4c6824b5f66efe75011933c85";
+        String url = "http://apilayer.net/api/live?access_key=e1ed640fea2e2a43ab70534a7cf98332";
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             public void onResponse(JSONObject response) {
                 try {
@@ -258,7 +262,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void jsonParseLoad(final String a, final String b){
         Log.d("Pars1","Вход"+ a + b);
-        String url = "http://apilayer.net/api/live?access_key=9c169bf4c6824b5f66efe75011933c85";
+        String url = "http://apilayer.net/api/live?access_key=e1ed640fea2e2a43ab70534a7cf98332";
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             public void onResponse(JSONObject response) {
                 try {

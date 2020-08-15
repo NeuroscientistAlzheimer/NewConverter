@@ -228,7 +228,7 @@ public class Customization extends AppCompatActivity implements View.OnClickList
     }
 
     private void emtyTtemsCurrency(final ArrayList<String> items) {
-        String url = "http://apilayer.net/api/live?access_key=9c169bf4c6824b5f66efe75011933c85";
+        String url = "http://apilayer.net/api/live?access_key=e1ed640fea2e2a43ab70534a7cf98332";
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             public void onResponse(JSONObject response) {
                 try {
